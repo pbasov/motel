@@ -1,0 +1,29 @@
+{{- if (index .Values "victoriametrics" "vmauth" | default dict).enabled | default false }}
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMAuth
+metadata:
+  name: regional
+  namespace: {{ .Release.Namespace }}
+spec:
+  discover_backend_ips: true
+  ingress:
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      kubernetes.io/tls-acme: "true"
+    class_name: nginx
+    tlsHosts:
+    - {{ .Values.victoriametrics.vmauth.ingress.host | quote }}
+    tlsSecretName: vmauth-tls
+  license: {}
+  port: "8427"
+  selectAllByDefault: true
+  unauthorizedAccessConfig:
+  - src_paths:
+    - /insert/.*
+    url_prefix:
+    - http://vminsert-regional.mon.svc:8480/
+  - src_paths:
+    - /select/.*
+    url_prefix:
+    - http://vmselect-regional.mon.svc:8481/
+{{- end }}

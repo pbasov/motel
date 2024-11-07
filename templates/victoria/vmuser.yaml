@@ -1,0 +1,19 @@
+{{- if (index .Values "victoriametrics" "vmauth" | default dict).enabled | default false }}
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMUser
+metadata:
+  name: vmuser-select
+  namespace: {{ .Release.Namespace }}
+spec:
+  password: mirantis3000
+  targetRefs:
+  - drop_src_path_prefix_parts: 1
+    paths:
+    - /vls/.*
+    static:
+      url: http://motel-victoria-logs-single-server.mon.svc:9428
+  username: vm1
+status:
+  lastSyncError: ""
+  status: operational
+{{- end }}

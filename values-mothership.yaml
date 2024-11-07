@@ -1,0 +1,31 @@
+global:
+  clusterLabel: clusterName
+  storageClass: openebs-lvmpv-pbll
+  clusterName: mothership
+opentelemetry-operator:
+  enabled: false
+prometheus-operator-crds:
+  enabled: false
+victoriametrics:
+  enabled: enabled
+  vmauth:
+    enabled: false
+  vmcluster:
+    enabled: true
+    replicationFactor: 1
+    replicaCount: 1
+  vmalert:
+    enabled: true
+    remoteRead: http://promxy:8082
+grafana:
+  enabled: true
+  ingress:
+    host: grafana.weystrom.dev
+  alerts:
+    enabled: true
+  datasource:
+    url: http://promxy:8082
+victoria-metrics-operator:
+  enabled: true
+  crds:
+    plain: true

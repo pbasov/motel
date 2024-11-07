@@ -1,0 +1,38 @@
+global:
+  clusterLabel: clusterName
+  storageClass: gp2
+  clusterName: regional0
+opentelemetry-operator:
+  enabled: false
+prometheus-operator-crds:
+  enabled: false
+victoriametrics:
+  enabled: true
+  vmauth:
+    enabled: true
+    ingress:
+      host: vmauth.hmc0.weystrom.net
+  vmcluster:
+    enabled: true
+  vmalert:
+    enabled: true
+grafana:
+  enabled: true
+  ingress:
+    host: grafana.hmc0.weystrom.net
+  datasource:
+    url: http://vmselect-regional:8481/select/0/prometheus
+  alerts:
+    enabled: true
+victoria-metrics-operator:
+  enabled: true
+  crds:
+    plain: true
+victoria-logs-single:
+  enabled: true
+  server:
+    persistentVolume:
+      enabled: true
+      storageClassName: gp2
+  fluent-bit:
+    enabled: false
