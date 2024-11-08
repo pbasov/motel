@@ -66,5 +66,5 @@ spec:
       tls:
         - hosts:
             - {{ .Values.grafana.ingress.host | quote }}
-          secretName: grafana-regional-tls
+          secretName: grafana-cluster-tls
 {{- end }}

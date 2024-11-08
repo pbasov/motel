@@ -7,6 +7,7 @@ dependencies:
   - name: grafana-operator
     version: v5.13.0
     repository: "oci://ghcr.io/grafana/helm-charts"
+    condition: grafana.enabled
   - name: opentelemetry-operator
     version: 0.69.0
     repository: "https://open-telemetry.github.io/opentelemetry-helm-charts"
@@ -15,23 +16,7 @@ dependencies:
     version: "0.36.*"
     repository: "https://victoriametrics.github.io/helm-charts/"
     condition: victoria-metrics-operator.enabled
-  - name: prometheus-node-exporter
-    version: "4.39.*"
-    repository: https://prometheus-community.github.io/helm-charts
-    condition: prometheus-node-exporter.enabled
-  - name: prometheus-operator-crds
-    version: "15.0.*"
-    repository: https://prometheus-community.github.io/helm-charts
-    condition: prometheus-operator-crds.enabled
-  - name: kube-state-metrics
-    version: "5.25.*"
-    repository: https://prometheus-community.github.io/helm-charts
-    condition: kube-state-metrics.enabled
   - name: victoria-logs-single
     version: "0.7.*"
     repository: https://victoriametrics.github.io/helm-charts/
     condition: victoria-logs-single.enabled
-  - name: fluent-bit
-    version: "0.47.*"
-    repository: https://fluent.github.io/helm-charts
-    condition: fluent-bit.enabled

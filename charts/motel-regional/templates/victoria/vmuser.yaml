@@ -5,14 +5,25 @@ metadata:
   name: vmuser-select
   namespace: {{ .Release.Namespace }}
 spec:
-  password: mirantis3000
   targetRefs:
   - drop_src_path_prefix_parts: 1
     paths:
     - /vls/.*
     static:
       url: http://motel-victoria-logs-single-server.mon.svc:9428
-  username: vm1
+  - drop_src_path_prefix_parts: 1
+    paths:
+    - /vm//select/.*
+    static:
+      url: http://vmselect-cluster.mon.svc:8481
+  - drop_src_path_prefix_parts: 1
+    paths:
+    - /vm//insert/.*
+    static:
+      url: http://vminsert-cluster.mon.svc:8480
+  username: motel
+  password: password
+  # generatePassword: true
 status:
   lastSyncError: ""
   status: operational
