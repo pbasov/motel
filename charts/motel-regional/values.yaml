@@ -13,6 +13,8 @@ victoriametrics:
     enabled: true
   vmalert:
     enabled: true
+  vmagent:
+    enabled: false
 grafana:
   enabled: true
   datasource:

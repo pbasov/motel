@@ -5,7 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/managed-by: Helm
   name: vls
-  namespace: mon
+  namespace: {{ .Release.Namespace }}
 spec:
   datasource:
     access: proxy
