@@ -13,18 +13,15 @@ spec:
       url: http://motel-victoria-logs-single-server.mon.svc:9428
   - drop_src_path_prefix_parts: 1
     paths:
-    - /vm//select/.*
+    - /vmk/select/.*
     static:
       url: http://vmselect-cluster.mon.svc:8481
   - drop_src_path_prefix_parts: 1
     paths:
-    - /vm//insert/.*
+    - /vm/insert/.*
     static:
       url: http://vminsert-cluster.mon.svc:8480
-  username: motel
-  password: password
+  username: {{ .Values.victoriametrics.vmauth.username }}
+  password: {{ .Values.victoriametrics.vmauth.password }}
   # generatePassword: true
-status:
-  lastSyncError: ""
-  status: operational
 {{- end }}

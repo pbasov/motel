@@ -1,6 +1,6 @@
 global:
   clusterLabel: clusterName
-  storageClass: gp2
+  storageClass: ebs-csi-default-sc
   clusterName: regional
 cert-manager:
   enabled: true
@@ -9,6 +9,9 @@ victoriametrics:
   enabled: true
   vmauth:
     enabled: true
+    credentials:
+      username: motel
+      password: motel
   vmcluster:
     enabled: true
   vmalert:
@@ -21,6 +24,9 @@ grafana:
     url: http://vmselect-cluster:8481/select/0/prometheus
   alerts:
     enabled: true
+  security:
+    admin_user: motel
+    admin_password: motel
 victoria-metrics-operator:
   enabled: true
   crds:
@@ -30,6 +36,6 @@ victoria-logs-single:
   server:
     persistentVolume:
       enabled: true
-      storageClassName: gp2
+      storageClassName: ebs-csi-default-sc
   fluent-bit:
     enabled: false
