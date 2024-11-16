@@ -8,20 +8,8 @@ dependencies:
 - name: victoria-metrics-operator
   repository: https://victoriametrics.github.io/helm-charts/
   version: 0.36.0
-- name: prometheus-node-exporter
-  repository: https://prometheus-community.github.io/helm-charts
-  version: 4.39.0
-- name: prometheus-operator-crds
-  repository: https://prometheus-community.github.io/helm-charts
-  version: 15.0.0
-- name: kube-state-metrics
-  repository: https://prometheus-community.github.io/helm-charts
-  version: 5.25.1
 - name: victoria-logs-single
   repository: https://victoriametrics.github.io/helm-charts/
   version: 0.7.3
-- name: fluent-bit
-  repository: https://fluent.github.io/helm-charts
-  version: 0.47.10
-digest: sha256:95ed21dde703d002ed22e4bc6a9471296af2aedf33e88a2fa93a6aa01b033319
-generated: "2024-11-11T21:14:50.413436534+01:00"
+digest: sha256:36cc50ac176645ed853a7ac4f9722d1953c7aa870720399e8c973ac651727e6e
+generated: "2024-11-16T17:47:07.387237+01:00"
