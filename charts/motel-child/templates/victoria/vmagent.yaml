@@ -16,6 +16,13 @@ spec:
   port: "8429"
   remoteWrite:
   - url: {{ .Values.victoriametrics.vmagent.remoteWriteUrl | quote }}
+    basicAuth:
+      username:
+        key: username
+        name: vmauth-creds
+      password:
+        key: password
+        name: vmauth-creds
   scrapeInterval: 20s
   selectAllByDefault: true
 {{- end }}

@@ -5,6 +5,10 @@ prometheus-operator-crds:
   enabled: true
 kube-state-metrics:
   enabled: true
+victoria-metrics-operator:
+  enabled: true
+  crds:
+    plain: true
 prometheus-node-exporter:
   enabled: true
   service:
@@ -17,9 +21,7 @@ victoriametrics:
   enabled: true
   vmagent:
     enabled: true
-    remoteWriteUrl: https://vmauth.hmc3.weystrom.net/insert/0/prometheus/api/v1/write
-victoria-metrics-operator:
-  enabled: true
+    remoteWriteUrl: https://vmauth.hmc0.weystrom.net/vm/insert/0/prometheus/api/v1/write
 fluent-bit:
   enabled: true
   outputUrl: vmauth.hmc0.weystrom.net

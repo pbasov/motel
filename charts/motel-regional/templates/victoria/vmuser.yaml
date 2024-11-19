@@ -10,18 +10,17 @@ spec:
     paths:
     - /vls/.*
     static:
-      url: http://motel-victoria-logs-single-server.mon.svc:9428
+      url: http://{{ .Release.Name }}-victoria-logs-single-server.{{ .Release.Namespace }}.svc:9428
   - drop_src_path_prefix_parts: 1
     paths:
-    - /vmk/select/.*
+    - /vm/select/.*
     static:
-      url: http://vmselect-cluster.mon.svc:8481
+      url: http://vmselect-cluster.{{ .Release.Namespace }}.svc:8481
   - drop_src_path_prefix_parts: 1
     paths:
     - /vm/insert/.*
     static:
-      url: http://vminsert-cluster.mon.svc:8480
-  username: {{ .Values.victoriametrics.vmauth.username }}
-  password: {{ .Values.victoriametrics.vmauth.password }}
-  # generatePassword: true
+      url: http://vminsert-cluster.{{ .Release.Namespace }}.svc:8480
+  username: {{ .Values.victoriametrics.vmauth.credentials.username | default "motel" }}
+  password: {{ .Values.victoriametrics.vmauth.credentials.password | default "motel" }}
 {{- end }}
