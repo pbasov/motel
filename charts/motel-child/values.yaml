@@ -11,6 +11,7 @@ victoria-metrics-operator:
     plain: true
 prometheus-node-exporter:
   enabled: true
+  hostNetwork: false
   service:
     labels:
       jobLabel: node-exporter
