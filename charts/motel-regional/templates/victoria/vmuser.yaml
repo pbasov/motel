@@ -22,5 +22,7 @@ spec:
     static:
       url: http://vminsert-cluster.{{ .Release.Namespace }}.svc:8480
   username: {{ .Values.victoriametrics.vmauth.credentials.username | default "motel" }}
-  password: {{ .Values.victoriametrics.vmauth.credentials.password | default "motel" }}
+  passwordRef:
+    key: password
+    name: vmuser-creds
 {{- end }}
