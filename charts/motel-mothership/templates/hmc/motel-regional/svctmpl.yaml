@@ -1,0 +1,14 @@
+apiVersion: hmc.mirantis.com/v1alpha1
+kind: ServiceTemplate
+metadata:
+  name: motel-regional-0-1-5
+  namespace: hmc-system
+spec:
+  helm:
+    chartRef:
+      apiVersion: source.toolkit.fluxcd.io/v1
+      kind: HelmChart
+      name: motel-regional
+      namespace: hmc-system
+    chartVersion: 0.1.5
+  providers: []

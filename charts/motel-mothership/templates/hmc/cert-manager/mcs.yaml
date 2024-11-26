@@ -1,0 +1,16 @@
+apiVersion: hmc.mirantis.com/v1alpha1
+kind: MultiClusterService
+metadata:
+  name: cert-manager
+spec:
+  servicesPriority: 1000
+  clusterSelector:
+    matchLabels:
+      motel: regional
+  services:
+    - name: cert-manager
+      namespace: cert-manager
+      template: cert-manager-1-16-1
+      values: |
+        crds:
+          enabled: true
