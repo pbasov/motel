@@ -14,7 +14,7 @@ metadata:
   {{ with .Values.promxy.ingress.extraLabels }}
 {{ toYaml . | indent 4 }}
   {{ end }}
-  name: {{ template "chart.fullname" . }}
+  name: {{ template "chart.fullname" . }}-promxy
   namespace: {{ .Release.Namespace }}
 spec:
   ingressClassName: {{ .Values.promxy.ingress.ingressClassName }}

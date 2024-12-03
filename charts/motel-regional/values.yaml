@@ -4,7 +4,7 @@ global:
   clusterName: regional
 cert-manager:
   enabled: true
-  email: mail@weystrom.net
+  email: mail@example.net
 victoriametrics:
   enabled: true
   vmauth:

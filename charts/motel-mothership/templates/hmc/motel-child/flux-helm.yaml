@@ -1,3 +1,4 @@
+{{- if .Values.hmc.installTemplates }}
 ---
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
@@ -24,3 +25,4 @@ spec:
     kind: HelmRepository
     name: motel
   version: 0.1.2
+{{- end }}

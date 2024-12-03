@@ -18,6 +18,8 @@ spec:
     spec:
       template:
         spec:
+          securityContext:
+            fsGroup: 472
           initContainers:
             - name: "load-vm-ds-plugin"
               image: "curlimages/curl:latest"
@@ -45,10 +47,13 @@ spec:
           volumes:
           - name: grafana-data
             persistentVolumeClaim:
-              claimName: grafana-pvc
+              claimName: grafana-vm-pvc
   config:
     plugins:
       allow_loading_unsigned_plugins: victoriametrics-datasource,victorialogs-datasource
+    security:
+      admin_user: {{ .Values.grafana.security.admin_user | quote }}
+      admin_password: {{ .Values.grafana.security.admin_password | quote }}
   ingress:
     metadata:
       annotations:

@@ -2,15 +2,39 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ include "chart.configname" .}}
+  name: {{ include "chart.configname" . }}
   namespace: {{ .Release.Namespace }}
-  labels: {{- include "chart.labels" . | nindent 4 }}
-  {{- if .Values.promxy.extraLabels}}
-  {{ toYaml .Values.promxy.extraLabels | nindent 4 }}
-  {{- end}}
+  labels:
+    {{- include "chart.labels" . | nindent 4 }}
+    {{- if .Values.promxy.extraLabels }}
+    {{ toYaml .Values.promxy.extraLabels | nindent 4 }}
+    {{- end }}
 data:
   config.yaml: |
-    {{- with .Values.promxy.config }}
-    {{ . | toYaml | nindent 4 }}
-    {{- end }}
+    global:
+      evaluation_interval: 5s
+      external_labels:
+        source: promxy
+    remote_write:
+      - url: {{ .Values.promxy.remoteWriteUrl | default  | quote }}
+    promxy:
+      server_groups:
+        {{- range .Values.promxy.serverGroups }}
+        - static_configs:
+            - targets:
+              {{- range .targets }}
+              - {{ . | quote }}
+              {{- end }}
+          path_prefix: {{ .pathPrefix | default "/vm/select/0/prometheus/" | quote }}
+          scheme: {{ .scheme | default "https" | quote }}
+          http_client:
+            dial_timeout: {{ .dialTimeout | default "1s" | quote }}
+            tls_config:
+              insecure_skip_verify: {{ .tlsConfig.insecureSkipVerify | default true }}
+            basic_auth:
+              username: {{ .auth.username | quote }}
+              password: {{ .auth.password | quote }}
+          labels:
+            promxyCluster: {{ .clusterName | quote }}
+        {{- end }}
 {{- end }}

@@ -14,9 +14,6 @@ spec:
       resources:
         requests:
           storage: 200Mi
-  security:
-    admin_user: {{ .Values.grafana.security.admin_user | quote }}
-    admin_password: {{ .Values.grafana.security.admin_password | quote }}
   deployment:
     spec:
       template:
@@ -54,6 +51,9 @@ spec:
   config:
     plugins:
       allow_loading_unsigned_plugins: victoriametrics-datasource,victorialogs-datasource
+    security:
+      admin_user: {{ .Values.grafana.security.admin_user | quote }}
+      admin_password: {{ .Values.grafana.security.admin_password | quote }}
   ingress:
     metadata:
       annotations:

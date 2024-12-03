@@ -56,20 +56,20 @@ Create the name of the service account to use
 */}}
 {{- define "chart.serviceAccountName" -}}
 {{- if .Values.promxy.serviceAccount.create -}}
-    {{ default (include "chart.fullname" .) .Values.promxy.serviceAccount.name }}
+    {{ default (printf "%s-promxy" (include "chart.fullname" .)) .Values.promxy.serviceAccount.name }}
 {{- else -}}
     {{ default "default" .Values.promxy.serviceAccount.name }}
 {{- end -}}
 {{- end -}}
 
 {{/*
-Defins the name of configuratiob map
+Defins the name of configmap
 */}}
 {{- define "chart.configname" -}}
 {{- if .Values.promxy.configMap -}}
 {{- .Values.promxy.configMap -}}
 {{- else -}}
-{{- include "chart.fullname" . -}}-config
+{{- include "chart.fullname" . -}}-promxy-config
 {{- end -}}
 {{- end -}}
 
