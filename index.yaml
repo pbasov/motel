@@ -26,6 +26,36 @@ entries:
   motel-child:
   - apiVersion: v2
     appVersion: "1.0"
+    created: "2024-12-03T14:00:52.993837503Z"
+    dependencies:
+    - condition: victoria-metrics-operator.enabled
+      name: victoria-metrics-operator
+      repository: https://victoriametrics.github.io/helm-charts/
+      version: 0.36.*
+    - condition: prometheus-node-exporter.enabled
+      name: prometheus-node-exporter
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 4.39.*
+    - condition: prometheus-operator-crds.enabled
+      name: prometheus-operator-crds
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 15.0.*
+    - condition: kube-state-metrics.enabled
+      name: kube-state-metrics
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 5.25.*
+    - condition: fluent-bit.enabled
+      name: fluent-bit
+      repository: https://fluent.github.io/helm-charts
+      version: 0.47.*
+    description: A Helm chart that deploys Grafana, OpenTelemetry, and VictoriaMetrics.
+    digest: fb578fcc9efe1ad0d5dadba98fcbbdc83b9f160f1e6da7fca3f0cd0914a0ddf1
+    name: motel-child
+    urls:
+    - https://github.com/pbasov/motel/releases/download/motel-child-0.1.3/motel-child-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
+    appVersion: "1.0"
     created: "2024-11-22T00:14:16.454985715Z"
     dependencies:
     - condition: victoria-metrics-operator.enabled
@@ -117,6 +147,24 @@ entries:
   motel-mothership:
   - apiVersion: v2
     appVersion: "1.0"
+    created: "2024-12-03T14:00:53.204489188Z"
+    dependencies:
+    - condition: grafana.enabled
+      name: grafana-operator
+      repository: oci://ghcr.io/grafana/helm-charts
+      version: v5.13.0
+    - condition: victoria-metrics-operator.enabled
+      name: victoria-metrics-operator
+      repository: https://victoriametrics.github.io/helm-charts/
+      version: 0.36.*
+    description: A Helm chart that deploys Grafana, Promxy, and VictoriaMetrics.
+    digest: c0df72e7bb577e74361fae46b551f280b1b69396416722ce26a306c0304ef9de
+    name: motel-mothership
+    urls:
+    - https://github.com/pbasov/motel/releases/download/motel-mothership-0.1.1/motel-mothership-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: "1.0"
     created: "2024-11-26T15:36:24.456645747Z"
     dependencies:
     - condition: grafana.enabled
@@ -134,6 +182,28 @@ entries:
     - https://github.com/pbasov/motel/releases/download/motel-mothership-0.1.0/motel-mothership-0.1.0.tgz
     version: 0.1.0
   motel-regional:
+  - apiVersion: v2
+    appVersion: "1.0"
+    created: "2024-12-03T14:00:53.432315371Z"
+    dependencies:
+    - condition: grafana.enabled
+      name: grafana-operator
+      repository: oci://ghcr.io/grafana/helm-charts
+      version: v5.15.1
+    - condition: victoria-metrics-operator.enabled
+      name: victoria-metrics-operator
+      repository: https://victoriametrics.github.io/helm-charts/
+      version: 0.36.*
+    - condition: victoria-logs-single.enabled
+      name: victoria-logs-single
+      repository: https://victoriametrics.github.io/helm-charts/
+      version: 0.7.*
+    description: A Helm chart that deploys Grafana, and VictoriaMetrics.
+    digest: fd81c769065f13ad459407b1dfa675ba3d9af4a97457802c1d04560e21927cfa
+    name: motel-regional
+    urls:
+    - https://github.com/pbasov/motel/releases/download/motel-regional-0.1.6/motel-regional-0.1.6.tgz
+    version: 0.1.6
   - apiVersion: v2
     appVersion: "1.0"
     created: "2024-11-26T15:18:07.894370384Z"
@@ -244,4 +314,4 @@ entries:
     urls:
     - https://github.com/pbasov/motel/releases/download/motel-regional-0.1.1/motel-regional-0.1.1.tgz
     version: 0.1.1
-generated: "2024-11-26T15:36:24.45666317Z"
+generated: "2024-12-03T14:00:53.432340228Z"
