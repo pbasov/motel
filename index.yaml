@@ -147,6 +147,24 @@ entries:
   motel-mothership:
   - apiVersion: v2
     appVersion: "1.0"
+    created: "2024-12-05T12:22:12.362944737Z"
+    dependencies:
+    - condition: grafana.enabled
+      name: grafana-operator
+      repository: oci://ghcr.io/grafana/helm-charts
+      version: v5.13.0
+    - condition: victoria-metrics-operator.enabled
+      name: victoria-metrics-operator
+      repository: https://victoriametrics.github.io/helm-charts/
+      version: 0.36.*
+    description: A Helm chart that deploys Grafana, Promxy, and VictoriaMetrics.
+    digest: f06fc3b1eb17c072825cf568524fcb9ac1bc32b71b4d82fa0e37db1b19d9cbc1
+    name: motel-mothership
+    urls:
+    - https://github.com/pbasov/motel/releases/download/motel-mothership-0.1.2/motel-mothership-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: "1.0"
     created: "2024-12-03T14:00:53.204489188Z"
     dependencies:
     - condition: grafana.enabled
@@ -182,6 +200,28 @@ entries:
     - https://github.com/pbasov/motel/releases/download/motel-mothership-0.1.0/motel-mothership-0.1.0.tgz
     version: 0.1.0
   motel-regional:
+  - apiVersion: v2
+    appVersion: "1.0"
+    created: "2024-12-05T12:22:12.523641243Z"
+    dependencies:
+    - condition: grafana.enabled
+      name: grafana-operator
+      repository: oci://ghcr.io/grafana/helm-charts
+      version: v5.15.1
+    - condition: victoria-metrics-operator.enabled
+      name: victoria-metrics-operator
+      repository: https://victoriametrics.github.io/helm-charts/
+      version: 0.36.*
+    - condition: victoria-logs-single.enabled
+      name: victoria-logs-single
+      repository: https://victoriametrics.github.io/helm-charts/
+      version: 0.7.*
+    description: A Helm chart that deploys Grafana, and VictoriaMetrics.
+    digest: da609d3337dcd3c42fa2cb2face27847d511133bd28eed666c8452181f99211a
+    name: motel-regional
+    urls:
+    - https://github.com/pbasov/motel/releases/download/motel-regional-0.1.7/motel-regional-0.1.7.tgz
+    version: 0.1.7
   - apiVersion: v2
     appVersion: "1.0"
     created: "2024-12-03T14:00:53.432315371Z"
@@ -314,4 +354,4 @@ entries:
     urls:
     - https://github.com/pbasov/motel/releases/download/motel-regional-0.1.1/motel-regional-0.1.1.tgz
     version: 0.1.1
-generated: "2024-12-03T14:00:53.432340228Z"
+generated: "2024-12-05T12:22:12.523673293Z"
