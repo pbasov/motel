@@ -16,10 +16,10 @@ data:
       external_labels:
         source: promxy
     remote_write:
-      - url: {{ .Values.promxy.remoteWriteUrl | default  | quote }}
+      - url: {{ .Values.promxy.config.remoteWriteUrl | default | quote }}
     promxy:
       server_groups:
-        {{- range .Values.promxy.serverGroups }}
+        {{- range .Values.promxy.config.serverGroups }}
         - static_configs:
             - targets:
               {{- range .targets }}
@@ -30,7 +30,7 @@ data:
           http_client:
             dial_timeout: {{ .dialTimeout | default "1s" | quote }}
             tls_config:
-              insecure_skip_verify: {{ .tlsConfig.insecureSkipVerify | default true }}
+              insecure_skip_verify: true
             basic_auth:
               username: {{ .auth.username | quote }}
               password: {{ .auth.password | quote }}

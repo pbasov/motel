@@ -15643,7 +15643,7 @@ templating:
     datasource:
       type: prometheus
       uid: ${datasource}
-    definition: label_values(node_uname_info{job="$job", clusterName="$cluster"}, instance),
+    definition: label_values(node_uname_info{job="$job", clusterName="$cluster"}, instance)
     hide: 0
     includeAll: false
     label: Host
@@ -15651,7 +15651,7 @@ templating:
     name: node
     options: []
     query:
-      query: label_values(node_uname_info{job="$job", clusterName="$cluster"}, instance),
+      query: label_values(node_uname_info{job="$job", clusterName="$cluster"}, instance)
       refId: Prometheus-node-Variable-Query
     refresh: 1
     regex: ''
@@ -15665,7 +15665,7 @@ templating:
     datasource:
       type: prometheus
       uid: ${datasource}
-    definition: label_values(node_uname_info{job="$job"}, clusterName="$cluster", instance),
+    definition: label_values(node_uname_info{job="$job"},clusterName)
     hide: 0
     includeAll: false
     label: Cluster
@@ -15673,7 +15673,7 @@ templating:
     name: cluster
     options: []
     query:
-      query: label_values(node_uname_info{job="$job"}, clusterName="$cluster", instance)
+      query: label_values(node_uname_info{job="$job"}, clusterName)
       refId: Prometheus-cluster-Variable-Query
     refresh: 1
     regex: ''
