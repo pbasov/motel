@@ -12,6 +12,8 @@ victoriametrics:
     credentials:
       username: motel
       password: motel
+    ingress:
+      host: vmauth.hmc0.example.net
   vmcluster:
     enabled: true
   vmalert:
@@ -27,6 +29,8 @@ grafana:
   security:
     admin_user: motel
     admin_password: motel
+  ingress:
+    host: grafana.hmc0.example.net
 victoria-metrics-operator:
   enabled: true
   crds:
